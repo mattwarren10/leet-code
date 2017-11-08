@@ -12,9 +12,30 @@ return [0, 1].
 	
 =end
 
-target = 9
-nums = [2, 7, 11, 15]
+def iterate(first, last)
+	
+end
+
+def two_sum(left, right)
+	target = 9
+	nums = [2, 7, 11, 15]
+	mid = (nums.last/2).floor
+	indicies = []	
+	if mid < target
+		right = nums.index(mid) - 1
+		arr = iterate(left, right)
+	elsif mid == target
+		indices = [mid]
+	else
+		first = nums.index(mid)
+		arr = iterate(left, right)
+	end
+	diff = target - last
+
+	puts indices
+end
 
 left = nums.first
 right = nums.last
-mid = (nums.last/2).floor
+
+two_sum(left, right)
