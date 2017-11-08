@@ -12,30 +12,27 @@ return [0, 1].
 	
 =end
 
-def iterate(first, last)
-	
-end
-
-def two_sum(left, right)
+def two_sum
+	indicies = []
+	potential_num = 0
 	target = 9
 	nums = [2, 7, 11, 15]
-	mid = (nums.last/2).floor
-	indicies = []	
-	if mid < target
-		right = nums.index(mid) - 1
-		arr = iterate(left, right)
-	elsif mid == target
-		indices = [mid]
+	if nums.include?(target)
+		indicies[target]
 	else
-		first = nums.index(mid)
-		arr = iterate(left, right)
+		nums.index(nums[-1]).downto(0) do |n|
+			if n < target
+				potential_num = nums.index(n)
+				diff = target - n
+				if nums.include?(diff)
+					diff = nums.index(diff)
+					indicies.push(potential_num, diff)
+					break					
+				end
+			end
+		end
 	end
-	diff = target - last
-
-	puts indices
+	p indicies
 end
 
-left = nums.first
-right = nums.last
-
-two_sum(left, right)
+two_sum
